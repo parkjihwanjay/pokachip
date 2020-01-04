@@ -7,6 +7,7 @@ import numpy as np
 
 # selenium.py에서 order 함수 가져옴
 from selenum import order
+from order import order_data
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -17,6 +18,7 @@ from google.cloud.speech import types
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+from PyQt5.QtGui import *
 
 form_class = uic.loadUiType("textbrowserTest.ui")[0]
 
@@ -41,17 +43,35 @@ class WindowClass(QMainWindow, form_class):
         # 버튼에 기능을 할당하는 코드
         self.btn_Start.clicked.connect(self.printTextFunction)
         self.btn_Search.clicked.connect(self.startSearchFunction)
-        self.btn_Clear.clicked.connect(self.changeTextFunction2)
+        self.btn_reStart.clicked.connect(self.printTextFunction)
+        self.input_adrs1.textChanged.connect(self.printAdrs1Function)
+        self.input_adrs2.textChanged.connect(self.printAdrs2Function)
 
-    # 메뉴입력 버튼을 누르면 실행되는 함수
+    # 기본주소 입력 시 실행되는 함수. address1에 값 저장
+    def printAdrs1Function(self):
+        global address1
+        address1 = self.input_adrs1.text()
+
+        print(address1)
+
+    # 상세주소 입력 시 실행되는 함수. address2에 값 저장
+
+    def printAdrs2Function(self):
+        global address2
+        address2 = self.input_adrs2.text()
+
+        print(address2)
+
     def printTextFunction(self):
+
+        self.box_record.setStyleSheet('background-color:green;')
 
         # 오디오 파일 설정
         CHUNK = 1024
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        RECORD_SECONDS = 5
+        RECORD_SECONDS = 7
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작
@@ -162,13 +182,14 @@ class WindowClass(QMainWindow, form_class):
         self.textbrow_Test.setPlainText(menu)
 
     def startSearchFunction(self):
-        order(menu)
+        store, menu_list, number_list = order_data(menu)
+        order(menu_list, address1, address2, store, number_list)
 
     # 프로그램 하단 TextLabel 변경하는 함수
-    def changeTextFunction2(self):
-        # self.Label이름.setText("String")
-        # Label에 글자를 바꾸는 메서드
-        self.label_test.setText(menu)
+    # def changeTextFunction2(self):
+    #     # self.Label이름.setText("String")
+    #     # Label에 글자를 바꾸는 메서드
+    #     self.label_test.setText(menu)
 
 
 # PyQt
