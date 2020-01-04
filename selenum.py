@@ -8,7 +8,6 @@ import time
 
 driver = webdriver.Chrome('./chromedriver')
 
-
 def order(menu):
     menuList = menu.split()
     c = '고려대학교안암캠퍼스'
