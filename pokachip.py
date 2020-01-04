@@ -4,10 +4,12 @@ import io
 import os
 import time
 import numpy as np
+from playsound import playsound
 
 # selenium.py에서 order 함수 가져옴
 from selenum import order
 from order import order_data
+from ttsEx import synthesize_text
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -43,10 +45,10 @@ def start():
         y = np.absolute(y)
         y = y[range(int(n/2))]
         y_value = max(y)
-        print('큰소리 나는지 보는중')
+        #print('큰소리 나는지 보는중')
 
-        if y_value > 4000:
-            print('띠용')
+        if y_value > 5000:
+            # print('띠용')
 
             CHUNK = 1024
             FORMAT = pyaudio.paInt16
@@ -71,7 +73,7 @@ def start():
             while(True):
                 data2 = stream.read(CHUNK)
                 frames2.append(data2)
-                print(time.time())
+                # print(time.time())
 
                 dataBuffer = np.frombuffer(data2, dtype=np.int16)
                 n = len(dataBuffer)
@@ -98,7 +100,7 @@ def start():
                 else:
                     criterial_time = 0
                     end_time = 0
-                    print('말하는 중이라 시간 reset')
+                    #print('말하는 중이라 시간 reset')
 
             print("Recording is finished.")
             stream.stop_stream()
@@ -133,7 +135,7 @@ def start():
 
             # Detects speech in the audio file
             response = client.recognize(config, audio)
-            print(response.results)
+            # print(response.results)
 
             result = response.results
 
@@ -141,9 +143,11 @@ def start():
                 stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
                                 frames_per_buffer=CHUNK)
                 continue
-            print('Transcript: {}' .format(
-                result[0].alternatives[0].transcript))
+            # print('Transcript: {}' .format(
+            #    result[0].alternatives[0].transcript))
             if str(result[0].alternatives[0].transcript) == "메로나":
+                synthesize_text("부르셨나요?")
+                playsound("output2.mp3")
                 return True
 
             stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
@@ -164,7 +168,7 @@ if start():
 
 def transcriptOut(response):
     for result in response.results:
-        print('Transcript: {}'.format(result.alternatives[0].transcript))
+       #print('Transcript: {}'.format(result.alternatives[0].transcript))
         menu = result.alternatives[0].transcript
         return menu
 
@@ -192,7 +196,7 @@ class WindowClass(QMainWindow, form_class):
         global address1
         address1 = self.input_adrs1.text()
 
-        print(address1)
+        # print(address1)
 
     # 상세주소 입력 시 실행되는 함수. address2에 값 저장
 
@@ -200,7 +204,7 @@ class WindowClass(QMainWindow, form_class):
         global address2
         address2 = self.input_adrs2.text()
 
-        print(address2)
+        # print(address2)
 
     def printTextFunction(self):
 
@@ -230,7 +234,7 @@ class WindowClass(QMainWindow, form_class):
         while(True):
             data = stream.read(CHUNK)
             frames.append(data)
-            print(time.time())
+            # print(time.time())
 
             data2 = np.frombuffer(data, dtype=np.int16)
             n = len(data2)
@@ -251,13 +255,13 @@ class WindowClass(QMainWindow, form_class):
                     criterial_time = time.time()
                     # print(criterial_time)
 
-                if end_time - criterial_time > 2:
+                if end_time - criterial_time > 1:
                     # print('종료')
                     break
             else:
                 criterial_time = 0
                 end_time = 0
-                print('말하는 중이라 시간 reset')
+                #print('말하는 중이라 시간 reset')
 
         print("Recording is finished.")
         stream.stop_stream()
@@ -293,8 +297,8 @@ class WindowClass(QMainWindow, form_class):
         # Detects speech in the audio file
         response = client.recognize(config, audio)
 
-        for result in response.results:
-            print('Transcript: {}' .format(result.alternatives[0].transcript))
+        # for result in response.results:
+        #print('Transcript: {}' .format(result.alternatives[0].transcript))
 
         global menu
         menu = transcriptOut(response)
@@ -304,6 +308,11 @@ class WindowClass(QMainWindow, form_class):
     def startSearchFunction(self):
         store, menu_list, number_list = order_data(menu)
         order(menu_list, address1, address2, store, number_list)
+
+        menuk = menu.replace(" ", "")
+        menud = menuk.split("주문")[0]
+        synthesize_text(menud+"를"+address1+address2+"로 주문하시겠습니까?")
+        playsound("output2.mp3")
 
     # 프로그램 하단 TextLabel 변경하는 함수
     # def changeTextFunction2(self):
