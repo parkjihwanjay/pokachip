@@ -42,4 +42,4 @@ def order_data(string):
         "num": number_list
     }
 
-    return data
+    return store, menu_list, number_list
