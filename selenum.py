@@ -6,7 +6,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-<<<<<<< HEAD
 driver = webdriver.Chrome('./chromedriver')
 waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
                         ElementNotInteractableException, NoSuchElementException])
@@ -20,8 +19,6 @@ def leastword(list1, food1):
                 return list1.index(ele)
         except IndexError:
             continue
-=======
->>>>>>> 02ef09c57f3a4b2950f0d2521660b4a324568b06
 
 def order(menu):
 
@@ -169,12 +166,7 @@ def order(menu):
 
         driver.find_element_by_xpath("//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(e)
 
-<<<<<<< HEAD
 store = None
 menu = "짜장면 짬뽕"
 num_list = [1, 3]
 order(menu)
-=======
-#menu = "짜장면 탕수육 짬뽕"
-# order(menu)
->>>>>>> 02ef09c57f3a4b2950f0d2521660b4a324568b06
