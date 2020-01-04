@@ -1,5 +1,4 @@
-<img src="/logo.png" title="로고" alt="올 때 메로나" ></img>
-![로고]("./logo.png" "./logo.png") {:.aligncenter}
+<img src="/logo.png" title="로고" alt="올 때 메로나" width="100%" ></img>
 
 
 
