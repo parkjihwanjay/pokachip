@@ -3,6 +3,7 @@ import wave
 import io
 import os
 import time
+import numpy as np
 
 # selenium.py에서 order 함수 가져옴
 from selenum import order
@@ -22,7 +23,15 @@ from PyQt5.QtGui import *
 form_class = uic.loadUiType("textbrowserTest.ui")[0]
 
 
+def transcriptOut(response):
+    for result in response.results:
+        print('Transcript: {}'.format(result.alternatives[0].transcript))
+        menu = result.alternatives[0].transcript
+        return menu
+
+
 class WindowClass(QMainWindow, form_class):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -63,7 +72,6 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        RECORD_SECONDS = 6
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작
@@ -76,12 +84,43 @@ class WindowClass(QMainWindow, form_class):
         print("Start to record the audio.")
         frames = []
 
-        for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+        # silence 기준시간 설정
+        criterial_time = 0
+        end_time = 0
+
+        while(True):
             data = stream.read(CHUNK)
             frames.append(data)
+            print(time.time())
+
+            data2 = np.frombuffer(data, dtype=np.int16)
+            n = len(data2)
+            measure = np.fft.fft(data2)/n
+            measure = np.absolute(measure)
+            measure = measure[(range(int(n/2)))]
+            measure_value = max(measure)
+
+            # 기준값
+            thres_value = 1600
+
+            if measure_value < thres_value:
+                if(criterial_time):
+                    # print('1번째 조건 criterial', criterial_time)
+                    end_time = time.time()
+                    # print('1번째 조건 endtime', end_time)
+                else:
+                    criterial_time = time.time()
+                    # print(criterial_time)
+
+                if end_time - criterial_time > 2:
+                    # print('종료')
+                    break
+            else:
+                criterial_time = 0
+                end_time = 0
+                print('말하는 중이라 시간 reset')
 
         print("Recording is finished.")
-
         stream.stop_stream()
         stream.close()
         p.terminate()
@@ -95,9 +134,6 @@ class WindowClass(QMainWindow, form_class):
         wf.writeframes(b''.join(frames))
         wf.close()
         # 녹음파일 저장 끝
-
-        # 녹음파일 저장될 때까지 5초 sleep
-        # Instantiates a client
 
         client = speech.SpeechClient()
 
@@ -119,12 +155,10 @@ class WindowClass(QMainWindow, form_class):
         response = client.recognize(config, audio)
 
         for result in response.results:
-            print('Transcript: {}'.format(result.alternatives[0].transcript))
-
-            # return result.alternatives[0].transcript
+            print('Transcript: {}' .format(result.alternatives[0].transcript))
 
         global menu
-        menu = result.alternatives[0].transcript
+        menu = transcriptOut(response)
 
         self.textbrow_Test.setPlainText(menu)
 

@@ -2,6 +2,7 @@
 *.json
 *.wav
 .DS_Store
+.log
 # folder
 __pycache__
 .vscode
