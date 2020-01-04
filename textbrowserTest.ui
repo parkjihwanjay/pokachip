@@ -131,7 +131,8 @@
         </property>
         <property name="styleSheet">
          <string notr="true">padding: 8px;
-border : 1px solid white;</string>
+border : 1px solid white;
+color : white;</string>
         </property>
         <property name="html">
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
