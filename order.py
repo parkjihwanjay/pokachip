@@ -14,6 +14,9 @@ def order_data(string):
 
     orders = menus.split("개")
 
+    while '' in orders:
+        orders.remove('')
+
     menu_list = []
     number_list = []
 
