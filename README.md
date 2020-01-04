@@ -49,6 +49,8 @@ $ pipenv shell
 $ python .\selenium.py
 
  ```
+ * Google Cloud Platform 가입 및 Google Speech API가 필요합니다.
+ 
 ## 사용 방법
 
 1. **[기본 주소]**, **[상세 주소]**에 주소를 입력합니다.
