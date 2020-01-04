@@ -56,8 +56,12 @@ class WindowClass(QMainWindow, form_class):
         criterial_time = 0
         end_time = 0
 
+# for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+#     data = stream.read(CHUNK)
+#     frames.append(data)
+
         # 녹음 시작
-        while(True):
+        for i in range(0, int(RATE / CHUNK * 5000)):
             data = stream.read(CHUNK)
             frames.append(data)
 
@@ -117,7 +121,7 @@ class WindowClass(QMainWindow, form_class):
         # 녹음파일 저장 끝
 
         # 녹음파일 저장될 때까지 5초 sleep
-        time.sleep(5)
+        # time.sleep(5)
         # Instantiates a client
 
         client = speech.SpeechClient()
@@ -142,9 +146,9 @@ class WindowClass(QMainWindow, form_class):
         for result in response.results:
             print('Transcript: {}'.format(result.alternatives[0].transcript))
 
-            return result.alternatives[0].transcript
+            # return result.alternatives[0].transcript
 
-        time.sleep(5)
+        # time.sleep(5)
         global menu
         menu = result.alternatives[0].transcript
 

@@ -4,12 +4,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-<<<<<<< HEAD
 yapf = "*"
 pylint = "*"
 autopep8 = "*"
-=======
->>>>>>> e606ab7c6b5949249ec28c9228b874c3bfd10922
 
 [packages]
 pyaudio = "*"
