@@ -17,6 +17,8 @@ pyaudio = "*"
 selenium = "*"
 google-cloud-speech = "*"
 pyqt5 = "*"
+playsound = "*"
+pyobjc = "*"
 
 [requires]
 python_version = "3.7"
