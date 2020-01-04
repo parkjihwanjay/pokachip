@@ -71,7 +71,7 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        RECORD_SECONDS = 7
+        # RECORD_SECONDS = 5
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작
@@ -91,14 +91,22 @@ class WindowClass(QMainWindow, form_class):
 # for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
 #     data = stream.read(CHUNK)
 #     frames.append(data)
-
+        thres_value = 1600
         # 녹음 시작
-        # while(True):
-        for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+        while(True):
+            # initial_time = time.time() + 5
+            # for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+            # finish_time = time.time()
+            # if(finish_time - initial_time > 1):
+            #     initial_time = initial_time + 1
+            #     RECORD_SECONDS = RECORD_SECONDS + 1
+            #     print(RECORD_SECONDS)
             data = stream.read(CHUNK)
             frames.append(data)
+            print(time.time())
+            # time.sleep(0.04588)
 
-            data2 = np.frombuffer(stream.read(CHUNK), dtype=np.int16)
+            data2 = np.frombuffer(data, dtype=np.int16)
             n = len(data2)
             measure = np.fft.fft(data2)/n
             measure = np.absolute(measure)
@@ -106,8 +114,6 @@ class WindowClass(QMainWindow, form_class):
             measure_value = max(measure)
 
             # 현재 시간(초)
-
-            thres_value = 1600
 
             if measure_value < thres_value:
                 if(criterial_time):
@@ -124,7 +130,8 @@ class WindowClass(QMainWindow, form_class):
             else:
                 criterial_time = 0
                 end_time = 0
-                print('말하는 중이라 시간 reset')
+                # print('말하는 중이라 시간 reset')
+
 
 #         for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
 #             data = stream.read(CHUNK)
@@ -137,7 +144,7 @@ class WindowClass(QMainWindow, form_class):
 #             thres = thres[(range(int(n/2)))]
 #             print(max(thres))
 ####################################
-        print("Recording is finished.")
+        # print("Recording is finished.")
         stream.stop_stream()
         stream.close()
         p.terminate()
