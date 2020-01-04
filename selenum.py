@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException, ElementNotInterac
 import time
 
 
-def order(menu):
+def order(menu, adrs1, adrs2):
 
     driver = webdriver.Chrome('./chromedriver')
     waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
