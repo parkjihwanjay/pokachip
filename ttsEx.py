@@ -2,7 +2,7 @@
 import argparse
 
 global menu
-menu = "지환아 수고했다"
+menu = "승태형 베트남 잘 다녀오세요"
 
 
 def synthesize_text(text):
