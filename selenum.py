@@ -19,12 +19,19 @@ def order(menu):
     for food in lis:
         print(food)
 
-    driver.get('https://www.yogiyo.co.kr/mobile/#/327421/')
+    driver.get('https://www.yogiyo.co.kr/')
+
+    #driver.find_element_by_tag_name("body").send_keys("Keys.ESCAPE")
 
     waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+    
+    #driver.("window.stop();")
 
-    driver.find_element_by_name('address_input').clear()
-    driver.find_element_by_name('address_input').send_keys(c)
+    element0 = waiting.until(EC.visibility_of_element_located((By.NAME, "address_input"))) 
+    #element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
+
+    element0.clear()
+    element0.send_keys(c)
 
     driver.find_element_by_xpath(
         "//*[@id=\"button_search_address\"]/button[2]").click()
@@ -65,6 +72,9 @@ def order(menu):
         driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
     except NoSuchElementException:
         waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+        
+        #time.sleep(1)
+        
         element1 = waiting.until(EC.element_to_be_clickable((By.XPATH, "//li[contains(string(), \"%s\")]" % b)))
         element1.click()
 
@@ -95,5 +105,5 @@ def order(menu):
 
         driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
 
-menu = "짜장면 탕수육"
+menu = "짜장면 탕수육 짬뽕"
 order(menu)
