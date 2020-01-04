@@ -37,9 +37,13 @@ Pockachip
  ```
  
 $ git clone https://github.com/juno1028/pokachip.git
+
 $ cd .\pokachip
+
 $ pipenv install
+
 $ pipenv shell
+
 $ python .\selenium.py
 
  ```
