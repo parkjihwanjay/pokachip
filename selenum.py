@@ -20,19 +20,20 @@ def leastword(list1, food1):
         except IndexError:
             continue
 
-def order(menu, adrs1, adrs2):
+def order(menu_list, adrs1, adrs2, store, num_list):
 
     driver = webdriver.Chrome('./chromedriver')
     waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
         ElementNotInteractableException, NoSuchElementException])
 
-    menuList = menu.split()
-    c = '고려대학교안암캠퍼스'
+    # menuList = menu.split()
+    #c = '고려대학교안암캠퍼스'
     d = '맥도날드'
-    e = '상세주소'
-    lis = []
-    for realmenu in menuList:
-        lis.append(realmenu)
+    #e = '상세주소'
+    # lis = []
+    # for realmenu in menuList:
+    #     lis.append(realmenu)
+    lis = menu_list
 
     driver.get('https://www.yogiyo.co.kr/')
 
@@ -48,7 +49,7 @@ def order(menu, adrs1, adrs2):
     #element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
 
     element0.clear()
-    element0.send_keys(c)
+    element0.send_keys(adrs1)
 
     driver.find_element_by_xpath(
         "//*[@id=\"button_search_address\"]/button[2]").click()
@@ -164,9 +165,9 @@ def order(menu, adrs1, adrs2):
 
         waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
 
-        driver.find_element_by_xpath("//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(e)
+        driver.find_element_by_xpath("//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(adrs2)
 
-store = None
-menu = "짜장면 짬뽕"
-num_list = [1, 3]
-order(menu)
+# store = None
+# menu = "짜장면 짬뽕"
+# num_list = [1, 3]
+# order(menu)

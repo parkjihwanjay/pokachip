@@ -6,6 +6,7 @@ import time
 
 # selenium.py에서 order 함수 가져옴
 from selenum import order
+from order import order_data
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -123,7 +124,8 @@ class WindowClass(QMainWindow, form_class):
         self.textbrow_Test.setPlainText(menu)
 
     def startSearchFunction(self):
-        order(menu, address1, address2)
+        store, menu_list, number_list = order_data(menu)
+        order(menu_list, address1, address2, store, number_list)
 
     # 프로그램 하단 TextLabel 변경하는 함수
     # def changeTextFunction2(self):
