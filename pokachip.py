@@ -34,6 +34,11 @@ class WindowClass(QMainWindow, form_class):
         self.input_adrs1.textChanged.connect(self.printAdrs1Function)
         self.input_adrs2.textChanged.connect(self.printAdrs2Function)
 
+        self.qPixmapFileVar = QPixmap()
+        self.qPixmapFileVar.load("logo.png")
+        self.qPixmapFileVar = self.qPixmapFileVar.scaledToWidth(600)
+        self.label_head.setPixmap(self.qPixmapFileVar)
+
     # 기본주소 입력 시 실행되는 함수. address1에 값 저장
     def printAdrs1Function(self):
         global address1
@@ -51,7 +56,7 @@ class WindowClass(QMainWindow, form_class):
 
     def printTextFunction(self):
 
-        self.box_record.setStyleSheet('background-color:green')
+        self.box_record.setStyleSheet('background-color:#60B99A')
 
         # 오디오 파일 설정
         CHUNK = 1024
