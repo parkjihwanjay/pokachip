@@ -6,12 +6,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-driver = webdriver.Chrome('./chromedriver')
-waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
-                        ElementNotInteractableException, NoSuchElementException])
-
 
 def order(menu):
+
+    driver = webdriver.Chrome('./chromedriver')
+    waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
+        ElementNotInteractableException, NoSuchElementException])
+
     menuList = menu.split()
     c = '고려대학교안암캠퍼스'
     b = '중국집'
@@ -119,5 +120,5 @@ def order(menu):
         driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
 
 
-menu = "짜장면 탕수육 짬뽕"
-order(menu)
+#menu = "짜장면 탕수육 짬뽕"
+# order(menu)

@@ -72,7 +72,6 @@ class WindowClass(QMainWindow, form_class):
         # 녹음파일 저장 끝
 
         # 녹음파일 저장될 때까지 5초 sleep
-        time.sleep(5)
         # Instantiates a client
 
         client = speech.SpeechClient()
@@ -99,7 +98,6 @@ class WindowClass(QMainWindow, form_class):
 
             # return result.alternatives[0].transcript
 
-        time.sleep(5)
         global menu
         menu = result.alternatives[0].transcript
 
