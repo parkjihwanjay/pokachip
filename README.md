@@ -1,4 +1,7 @@
-<center><img src="/logo.png" title="로고" alt="올 때 메로나" ></img></center>
+<img src="/logo.png" title="로고" alt="올 때 메로나" ></img>
+![로고]("/logo.png" "로고") {:.aligncenter}
+
+
 
 # Pockachip
 
