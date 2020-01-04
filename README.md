@@ -16,6 +16,8 @@ Pockachip
 
 ## 사용 모듈(버전)
 
+##### 해당 모듈은 Pipfile.lock에 정리되어 있습니다. 
+
 * pyaudio 0.2.11
 
 * selenium 3.141.0
