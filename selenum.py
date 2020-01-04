@@ -6,10 +6,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-driver = webdriver.Chrome('./chromedriver_MAC')
-
 
 def order(menu):
+    driver = webdriver.Chrome('./chromedriver')
+    
     menuList = menu.split()
     c = '고려대학교안암캠퍼스'
     b = '중국집'
