@@ -20,7 +20,34 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5.QtGui import *
 
-form_class = uic.loadUiType("textbrowserTest.ui")[0]
+
+def start():
+
+    CHUNK = 1024
+    RATE = 44100
+
+    p = pyaudio.PyAudio()
+    stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
+                    frames_per_buffer=CHUNK)
+
+    while(True):
+
+        data = np.frombuffer(stream.read(CHUNK), dtype=np.int16)
+        n = len(data)
+        y = np.fft.fft(data)/n
+        y = np.absolute(y)
+        y = y[range(int(n/2))]
+        y_value = max(y)
+        print('큰소리 나는지 보는중')
+
+        if y_value > 4000:
+            break
+
+    return True
+
+
+if start():
+    form_class = uic.loadUiType("textbrowserTest.ui")[0]
 
 
 def transcriptOut(response):
