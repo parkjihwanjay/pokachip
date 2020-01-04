@@ -93,8 +93,8 @@ class WindowClass(QMainWindow, form_class):
 #     frames.append(data)
 
         # 녹음 시작
-        while(True):
-            # for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+        # while(True):
+        for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
             data = stream.read(CHUNK)
             frames.append(data)
 
