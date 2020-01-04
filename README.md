@@ -1,4 +1,6 @@
-<img src="/logo.png" title="로고" alt="올 때 메로나" width="100%" ></img>
+
+<center><img src="/logo.png" title="로고" alt="올 때 메로나" width="100%"></img></center>
+
 
 
 
