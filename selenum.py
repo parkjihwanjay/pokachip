@@ -7,8 +7,6 @@ from selenium.common.exceptions import NoSuchElementException, ElementNotInterac
 import time
 
 
-
-
 def order(menu):
     driver = webdriver.Chrome('./chromedriver')
     
