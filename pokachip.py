@@ -3,6 +3,7 @@ import wave
 import io
 import os
 import time
+import numpy as np
 
 # selenium.py에서 order 함수 가져옴
 from selenum import order
@@ -38,7 +39,7 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        RECORD_SECONDS = 5
+        # RECORD_SECONDS = 5
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작
@@ -51,10 +52,54 @@ class WindowClass(QMainWindow, form_class):
         print("Start to record the audio.")
         frames = []
 
-        for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+        # silence 기준시간 설정
+        criterial_time = 0
+        end_time = 0
+
+        # 녹음 시작
+        while(True):
             data = stream.read(CHUNK)
             frames.append(data)
 
+            data2 = np.frombuffer(stream.read(CHUNK), dtype=np.int16)
+            n = len(data2)
+            measure = np.fft.fft(data2)/n
+            measure = np.absolute(measure)
+            measure = measure[(range(int(n/2)))]
+            measure_value = max(measure)
+
+            # 현재 시간(초)
+
+            thres_value = 1600
+
+            if measure_value < thres_value:
+                if(criterial_time):
+                    # print('1번째 조건 criterial', criterial_time)
+                    end_time = time.time()
+                    # print('1번째 조건 endtime', end_time)
+                else:
+                    criterial_time = time.time()
+                    # print(criterial_time)
+
+                if end_time - criterial_time > 2:
+                    # print('종료')
+                    break
+            else:
+                criterial_time = 0
+                end_time = 0
+                print('말하는 중이라 시간 reset')
+
+#         for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+#             data = stream.read(CHUNK)
+#             frames.append(data)
+# ####################################
+#             data2 = np.fromstring(stream.read(CHUNK), dtype=np.int16)
+#             n = len(data2)
+#             thres = np.fft.fft(data2)/n
+#             thres = np.absolute(thres)
+#             thres = thres[(range(int(n/2)))]
+#             print(max(thres))
+####################################
         print("Recording is finished.")
 
         stream.stop_stream()
@@ -97,7 +142,7 @@ class WindowClass(QMainWindow, form_class):
         for result in response.results:
             print('Transcript: {}'.format(result.alternatives[0].transcript))
 
-            # return result.alternatives[0].transcript
+            return result.alternatives[0].transcript
 
         time.sleep(5)
         global menu
