@@ -6,6 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+pyaudio = "*"
+selenium = "*"
+google = "*"
+urllib3 = "*"
+gcloud = "*"
+google-cloud-speech = "*"
+pyqt5 = "*"
 requests = "*"
 
 [requires]
