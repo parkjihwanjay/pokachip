@@ -6,11 +6,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-driver = webdriver.Chrome('./chromedriver')
-
 
 def leastword(list1, food1):
-    #list2 = []
+
+    # list2 = []
     for ele in list1:
         tex_lis = ele.text.split()
         try:
@@ -22,13 +21,14 @@ def leastword(list1, food1):
 
 def order(menu_list, adrs1, adrs2, store, num_list):
 
+    driver = webdriver.Chrome('./chromedriver')
     waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
         ElementNotInteractableException, NoSuchElementException])
 
     # menuList = menu.split()
-    #c = '고려대학교안암캠퍼스'
+    # c = '고려대학교안암캠퍼스'
     d = '맥도날드'
-    #e = '상세주소'
+    # e = '상세주소'
     # lis = []
     # for realmenu in menuList:
     #     lis.append(realmenu)
@@ -45,7 +45,7 @@ def order(menu_list, adrs1, adrs2, store, num_list):
 
     element0 = waiting.until(
         EC.visibility_of_element_located((By.NAME, "address_input")))
-    #element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
+    # element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
 
     element0.clear()
     element0.send_keys(adrs1)

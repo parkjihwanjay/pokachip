@@ -51,14 +51,14 @@ class WindowClass(QMainWindow, form_class):
 
     def printTextFunction(self):
 
-        self.box_record.setStyleSheet('background-color:green;')
+        self.box_record.setStyleSheet('background-color:green')
 
         # 오디오 파일 설정
         CHUNK = 1024
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        RECORD_SECONDS = 7
+        RECORD_SECONDS = 6
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작
