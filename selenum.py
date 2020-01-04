@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-driver = webdriver.Chrome('./chromedriver')
+driver = webdriver.Chrome('./chromedriver_MAC')
 
 
 def order(menu):
