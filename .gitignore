@@ -1,1 +1,7 @@
+# file
 *.json
+*.wav
+.DS_Store
+# folder
+__pycache__
+.vscode

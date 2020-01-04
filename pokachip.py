@@ -21,7 +21,19 @@ from PyQt5 import uic
 form_class = uic.loadUiType("textbrowserTest.ui")[0]
 
 
+def transcriptOut(response):
+    for result in response.results:
+        print('Transcript: {}'.format(result.alternatives[0].transcript))
+        menu = result.alternatives[0].transcript
+        return menu
+        # return result.alternatives[0].transcript
+
+    # global menu
+    # menu = result.alternatives[0].transcript
+
+
 class WindowClass(QMainWindow, form_class):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -39,7 +51,7 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        # RECORD_SECONDS = 5
+        RECORD_SECONDS = 5
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작
@@ -61,7 +73,8 @@ class WindowClass(QMainWindow, form_class):
 #     frames.append(data)
 
         # 녹음 시작
-        for i in range(0, int(RATE / CHUNK * 5000)):
+        while(True):
+            # for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
             data = stream.read(CHUNK)
             frames.append(data)
 
@@ -105,7 +118,6 @@ class WindowClass(QMainWindow, form_class):
 #             print(max(thres))
 ####################################
         print("Recording is finished.")
-
         stream.stop_stream()
         stream.close()
         p.terminate()
@@ -142,15 +154,10 @@ class WindowClass(QMainWindow, form_class):
 
         # Detects speech in the audio file
         response = client.recognize(config, audio)
+        print(response)
+        menu = transcriptOut(response)
 
-        for result in response.results:
-            print('Transcript: {}'.format(result.alternatives[0].transcript))
-
-            # return result.alternatives[0].transcript
-
-        # time.sleep(5)
-        global menu
-        menu = result.alternatives[0].transcript
+        print(menu)
 
         self.textbrow_Test.setPlainText(menu)
 

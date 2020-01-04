@@ -9,14 +9,6 @@ pylint = "*"
 autopep8 = "*"
 
 [packages]
-pyaudio = "*"
-selenium = "*"
-google = "*"
-urllib3 = "*"
-gcloud = "*"
-google-cloud-speech = "*"
-pyqt5 = "*"
-requests = "*"
 
 [requires]
 python_version = "3.7"
