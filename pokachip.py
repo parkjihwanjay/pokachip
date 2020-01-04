@@ -153,7 +153,11 @@ class WindowClass(QMainWindow, form_class):
 
         # Detects speech in the audio file
         response = client.recognize(config, audio)
-        print(response)
+
+        for result in response.results:
+            print('Transcript: {}' .format(result.alternatives[0].transcript))
+
+        global menu
         menu = transcriptOut(response)
 
         print(menu)
