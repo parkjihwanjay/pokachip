@@ -8,14 +8,11 @@ def order_data(string):
 
     if "에서" in string:
         store = words[0]
-        menus = words[1].split("주문해줘")[0]
+        menus = words[1].split("주문")[0]
     else:
-        menus = words[0].split("주문해줘")[0]
+        menus = words[0].split("주문")[0]
 
     orders = menus.split("개")
-
-    while '' in orders:
-        orders.remove('')
 
     menu_list = []
     number_list = []
@@ -33,13 +30,5 @@ def order_data(string):
 
         menu_list.append(i[:len(i)-1])
         number_list.append(text_to_num(value))
-
-    # print(list(li[0])[0])
-
-    data = {
-        "store": store,
-        "menus": menu_list,
-        "num": number_list
-    }
 
     return store, menu_list, number_list
