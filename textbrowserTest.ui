@@ -20,7 +20,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>420</y>
+     <y>400</y>
      <width>331</width>
      <height>131</height>
     </rect>
@@ -102,7 +102,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>570</y>
+     <y>550</y>
      <width>331</width>
      <height>211</height>
     </rect>
@@ -130,7 +130,8 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">padding: 8px;</string>
+         <string notr="true">padding: 8px;
+border : 1px solid white;</string>
         </property>
         <property name="html">
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -275,7 +276,7 @@ height: 20px;</string>
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>160</y>
+     <y>140</y>
      <width>291</width>
      <height>251</height>
     </rect>

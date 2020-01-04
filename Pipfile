@@ -10,6 +10,13 @@ autopep8 = "*"
 
 [packages]
 numpy = "*"
+gcloud = "*"
+google-cloud = "*"
+google-cloud-texttospeech = "*"
+pyaudio = "*"
+selenium = "*"
+google-cloud-speech = "*"
+pyqt5 = "*"
 
 [requires]
 python_version = "3.7"
