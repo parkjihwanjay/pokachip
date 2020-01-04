@@ -7,7 +7,9 @@ from selenium.common.exceptions import NoSuchElementException, ElementNotInterac
 import time
 
 driver = webdriver.Chrome('./chromedriver')
-waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[ElementNotInteractableException, NoSuchElementException])
+waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
+                        ElementNotInteractableException, NoSuchElementException])
+
 
 def order(menu):
     menuList = menu.split()
@@ -21,10 +23,19 @@ def order(menu):
     for food in lis:
         print(food)
 
-    driver.get('https://www.yogiyo.co.kr/mobile/#/327421/')
+    driver.get('https://www.yogiyo.co.kr/')
 
-    waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
-    element0 = waiting.until(EC.visibility_of_element_located((By.NAME, "address_input")))
+    # driver.find_element_by_tag_name("body").send_keys("Keys.ESCAPE")
+
+    waiting.until(EC.invisibility_of_element_located(
+        (By.XPATH, "//*[@id=\"spinner\"]")))
+
+    # driver.("window.stop();")
+
+    element0 = waiting.until(
+        EC.visibility_of_element_located((By.NAME, "address_input")))
+    #element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
+
     element0.clear()
     element0.send_keys(c)
 
@@ -36,12 +47,14 @@ def order(menu):
         driver.find_element_by_xpath("//li[contains(string(), \"%s\")]" %
                                      b).click()
 
-        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
 
         driver.find_element_by_xpath(
             "//*[@id=\"content\"]/div/div[4]/div[2]/div").click()
 
-        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
 
         size = len(driver.find_elements_by_xpath("//*[@id=\"menu\"]/div/div"))
 
@@ -66,15 +79,25 @@ def order(menu):
 
         driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
     except NoSuchElementException:
-        driver.find_element_by_xpath('//*[@id="category"]/ul/li[1]/a').click()
-        driver.find_element_by_xpath('//*[@id="category"]/ul/li[15]/form/div/input').send_keys(d)
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
 
-        # waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
-        # element1 = waiting.until(EC.element_to_be_clickable((By.XPATH, "//li[contains(string(), \"%s\")]" % b)))
-        # element1.click()
+        # time.sleep(1)
 
-        # element2 = waiting.until(EC.element_to_be_clickable((By.XPATH, "//*[@id=\"content\"]/div/div[4]/div[2]/div")))
-        # element2.click()
+        element1 = waiting.until(EC.element_to_be_clickable(
+            (By.XPATH, "//li[contains(string(), \"%s\")]" % b)))
+
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
+        element1.click()
+
+        element2 = waiting.until(EC.element_to_be_clickable(
+            (By.XPATH, "//*[@id=\"content\"]/div/div[4]/div[2]/div")))
+        element2.click()
+
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
+        size = len(driver.find_elements_by_xpath("//*[@id=\"menu\"]/div/div"))
 
         # waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
         # size = len(driver.find_elements_by_xpath("//*[@id=\"menu\"]/div/div"))
@@ -100,5 +123,6 @@ def order(menu):
 
         # driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
 
-menu = "짜장면 탕수육"
+
+menu = "짜장면 탕수육 짬뽕"
 order(menu)

@@ -32,13 +32,15 @@ Pockachip
 
 * requests 2.22.0
 
-## 사용 방법
+## 가이드 라인
 
 1. git clone https://github.com/juno1028/pokachip.git
 2. cd .\pokachip
 3. pipenv install
 4. pipenv shell
 5. python .\selenium.py
+
+## 사용 방법
 
 
 
