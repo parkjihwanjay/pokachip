@@ -84,6 +84,9 @@ def order(menu):
 
         element1 = waiting.until(EC.element_to_be_clickable(
             (By.XPATH, "//li[contains(string(), \"%s\")]" % b)))
+
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
         element1.click()
 
         element2 = waiting.until(EC.element_to_be_clickable(
