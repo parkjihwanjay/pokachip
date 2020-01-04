@@ -1,1 +1,6 @@
+# file
 *.json
+*.wav
+# folder
+__pycache__
+.vscode
