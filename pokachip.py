@@ -299,8 +299,6 @@ class WindowClass(QMainWindow, form_class):
         global menu
         menu = transcriptOut(response)
 
-        print(menu)
-
         self.textbrow_Test.setPlainText(menu)
 
     def startSearchFunction(self):
