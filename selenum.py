@@ -6,19 +6,24 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-driver = webdriver.Chrome('./chromedriver')
-
+driver = webdriver.Chrome('./chromedriver.exe')
 
 def leastword(list1, food1):
-    #list2 = []
+    list2 = []
     for ele in list1:
         tex_lis = ele.text.split()
         try:
-            if (len(str(food1)) == len(tex_lis[0])):
+            if len(str(food1)) == len(tex_lis[0]):
                 return list1.index(ele)
         except IndexError:
             continue
-
+    for ele in list1:
+        tex_lis = ele.text.split()
+        try:
+            if tex_lis[0] != None:
+                return list1.index(ele)
+        except IndexError:
+            continue
 
 def order(menu_list, adrs1, adrs2, store, num_list):
 
@@ -27,7 +32,7 @@ def order(menu_list, adrs1, adrs2, store, num_list):
 
     # menuList = menu.split()
     #c = '고려대학교안암캠퍼스'
-    d = '맥도날드'
+    #d = '맥도날드'
     #e = '상세주소'
     # lis = []
     # for realmenu in menuList:
@@ -152,8 +157,12 @@ def order(menu_list, adrs1, adrs2, store, num_list):
             driver.find_elements_by_xpath(
                 "//li[contains(string(), \'%s\')]" % food)[int(ind)].click()
             for j in range(num_list[k]-1):
-                driver.find_element_by_xpath(
+                try:
+                    driver.find_element_by_xpath(
                     "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
+                except NoSuchElementException:
+                    driver.find_element_by_xpath(
+                    "/html/body/div[10]/div/div[2]/div[4]/div/a[2]").click()
 
             # for i in range(0, size2):
             #     try:
@@ -178,10 +187,9 @@ def order(menu_list, adrs1, adrs2, store, num_list):
         driver.find_element_by_xpath(
             "//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(adrs2)
 
-
-# store = None
-# menu = ["짜장면", "짬뽕"]
-# num_list = [1, 3]
-# adrs1 = "고려대학교안암캠퍼스"
-# adrs2 = "홍보관"
-# order(menu, adrs1, adrs2, store, num_list)
+store = "페리카나"
+menu = ["후라이드", "양념치킨"]
+num_list = [1, 3]
+adrs1 = "고려대학교안암캠퍼스"
+adrs2 = "홍보관"
+order(menu, adrs1, adrs2, store, num_list)
