@@ -10,18 +10,24 @@ driver = webdriver.Chrome('./chromedriver')
 waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
                         ElementNotInteractableException, NoSuchElementException])
 
+def leastword(list1, food1):
+    #list2 = []
+    for ele in list1:
+        tex_lis = ele.text.split()
+        try:
+            if (len(str(food1)) == len(tex_lis[0])):
+                return list1.index(ele)
+        except IndexError:
+            continue
 
 def order(menu):
     menuList = menu.split()
     c = '고려대학교안암캠퍼스'
-    b = '중국집'
-    d = '가게이름'
+    d = '맥도날드'
     e = '상세주소'
     lis = []
     for realmenu in menuList:
         lis.append(realmenu)
-    for food in lis:
-        print(food)
 
     driver.get('https://www.yogiyo.co.kr/')
 
@@ -79,50 +85,83 @@ def order(menu):
 
         driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
     except NoSuchElementException:
-        waiting.until(EC.invisibility_of_element_located(
-            (By.XPATH, "//*[@id=\"spinner\"]")))
+        if(store):
+            waiting.until(EC.invisibility_of_element_located(
+                        (By.XPATH, "//*[@id=\"spinner\"]")))
 
-        # time.sleep(1)
+            element11 = waiting.until(EC.element_to_be_clickable(
+                (By.XPATH, "//*[@id=\"category\"]/ul/li[1]/a")))
+            element11.click()
+            driver.find_element_by_xpath("//*[@id=\"category\"]/ul/li[15]/form/div/input").send_keys(d) 
+            driver.find_element_by_xpath("//*[@id=\"category_search_button\"]").click()
+        else:
+            waiting.until(EC.invisibility_of_element_located(
+                        (By.XPATH, "//*[@id=\"spinner\"]")))
 
-        element1 = waiting.until(EC.element_to_be_clickable(
-            (By.XPATH, "//li[contains(string(), \"%s\")]" % b)))
+            element11 = waiting.until(EC.element_to_be_clickable(
+                (By.XPATH, "//*[@id=\"category\"]/ul/li[1]/a")))
+            element11.click()
+            driver.find_element_by_xpath("//*[@id=\"category\"]/ul/li[15]/form/div/input").send_keys(lis[0]) 
+            driver.find_element_by_xpath("//*[@id=\"category_search_button\"]").click()
+            # waiting.until(EC.invisibility_of_element_located(
+            #     (By.XPATH, "//*[@id=\"spinner\"]")))
 
-        waiting.until(EC.invisibility_of_element_located(
-            (By.XPATH, "//*[@id=\"spinner\"]")))
-        element1.click()
+            # element1 = waiting.until(EC.element_to_be_clickable(
+            # (By.XPATH, "//li[contains(string(), \"%s\")]" % b)))
+            # waiting.until(EC.invisibility_of_element_located(
+            # (By.XPATH, "//*[@id=\"spinner\"]")))
+            # element1.click()
+
+        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
 
         element2 = waiting.until(EC.element_to_be_clickable(
             (By.XPATH, "//*[@id=\"content\"]/div/div[4]/div[2]/div")))
         element2.click()
 
-        waiting.until(EC.invisibility_of_element_located(
-            (By.XPATH, "//*[@id=\"spinner\"]")))
+        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
         size = len(driver.find_elements_by_xpath("//*[@id=\"menu\"]/div/div"))
 
-        # waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
-        # size = len(driver.find_elements_by_xpath("//*[@id=\"menu\"]/div/div"))
+        for i in range(3, size - 1):
+            driver.find_element_by_xpath("//*[@id=\"menu\"]/div/div[%i]" %
+                                         i).click()
 
-        # for i in range(3, size - 1):
-        #     driver.find_element_by_xpath("//*[@id=\"menu\"]/div/div[%i]" %
-        #                                  i).click()
+        k = 0
 
-        # for food in lis:
-        #     size2 = len(
-        #         driver.find_elements_by_xpath(
-        #             "//li[contains(string(), \"%s\")]" % food))
+        for food in lis:
+            contain_list = driver.find_elements_by_xpath(
+                    "//li[contains(string(), \'%s\')]" % food)
+            size2 = len(contain_list)
 
-        #     for i in range(0, size2):
-        #         try:
-        #             driver.find_elements_by_xpath(
-        #                 "//li[contains(string(), \"%s\")]" % food)[i].click()
-        #             break
-        #         except ElementNotInteractableException:
-        #             continue
+            ind = leastword(contain_list, food)
 
-        #     driver.find_element_by_class_name('btn-add-cart').click()
+            driver.find_elements_by_xpath(
+                "//li[contains(string(), \'%s\')]" % food)[int(ind)].click()
+            for j in range(num_list[k]-1):
+                driver.find_element_by_xpath(
+                "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
 
-        # driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
+            # for i in range(0, size2):
+            #     try:
+            #         driver.find_elements_by_xpath(
+            #             "//li[contains(string(), \'%s\')]" % food)[i].click()
+            #         for j in range(num_list[k]-1):
+            #             driver.find_element_by_xpath(
+            #                 "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
+            #         break
+            #     except ElementNotInteractableException:
+            #         continue
 
+            k += 1
 
-menu = "짜장면 탕수육 짬뽕"
+            driver.find_element_by_class_name('btn-add-cart').click()
+
+        driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
+
+        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+
+        driver.find_element_by_xpath("//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(e)
+
+store = None
+menu = "짜장면 짬뽕"
+num_list = [1, 3]
 order(menu)
