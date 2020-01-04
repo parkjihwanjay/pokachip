@@ -1,3 +1,5 @@
+<img src="/ha.png" title="로고" alt="올 때 메로나"></img>
+
 Pockachip
 =============
 
