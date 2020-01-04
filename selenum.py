@@ -6,7 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import time
 
-driver = webdriver.Chrome('./chromedriver.exe')
+# driver = webdriver.Chrome('./chromedriver.exe')
+
 
 def leastword(list1, food1):
     list2 = []
@@ -25,8 +26,10 @@ def leastword(list1, food1):
         except IndexError:
             continue
 
+
 def order(menu_list, adrs1, adrs2, store, num_list):
 
+    driver = webdriver.Chrome('./chromedriver')
     waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
         ElementNotInteractableException, NoSuchElementException])
 
@@ -50,7 +53,7 @@ def order(menu_list, adrs1, adrs2, store, num_list):
 
     element0 = waiting.until(
         EC.visibility_of_element_located((By.NAME, "address_input")))
-    #element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
+    # element0 = waiting.until(EC.text_to_be_present_in_element((By.NAME, "address_input"), "*"))
 
     element0.clear()
     element0.send_keys(adrs1)
@@ -124,10 +127,10 @@ def order(menu_list, adrs1, adrs2, store, num_list):
             for j in range(num_list[k]-1):
                 try:
                     driver.find_element_by_xpath(
-                    "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
+                        "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
                 except NoSuchElementException:
                     driver.find_element_by_xpath(
-                    "/html/body/div[10]/div/div[2]/div[4]/div/a[2]").click()
+                        "/html/body/div[10]/div/div[2]/div[4]/div/a[2]").click()
 
             # for i in range(0, size2):
             #     try:
@@ -216,10 +219,10 @@ def order(menu_list, adrs1, adrs2, store, num_list):
             for j in range(num_list[k]-1):
                 try:
                     driver.find_element_by_xpath(
-                    "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
+                        "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
                 except NoSuchElementException:
                     driver.find_element_by_xpath(
-                    "/html/body/div[10]/div/div[2]/div[4]/div/a[2]").click()
+                        "/html/body/div[10]/div/div[2]/div[4]/div/a[2]").click()
 
             # for i in range(0, size2):
             #     try:
@@ -244,9 +247,10 @@ def order(menu_list, adrs1, adrs2, store, num_list):
         driver.find_element_by_xpath(
             "//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(adrs2)
 
-store = "페리카나"
-menu = ["후라이드", "양념치킨"]
-num_list = [1, 3]
-adrs1 = "고려대학교안암캠퍼스"
-adrs2 = "홍보관"
-order(menu, adrs1, adrs2, store, num_list)
+
+# store = "페리카나"
+# menu = ["후라이드", "양념치킨"]
+# num_list = [1, 3]
+# adrs1 = "고려대학교안암캠퍼스"
+# adrs2 = "홍보관"
+# order(menu, adrs1, adrs2, store, num_list)
