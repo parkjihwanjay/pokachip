@@ -50,7 +50,7 @@ class WindowClass(QMainWindow, form_class):
 
     def printTextFunction(self):
 
-        self.box_record.setStyleSheet('background-color:red;')
+        self.box_record.setStyleSheet('background-color:green;')
 
         # 오디오 파일 설정
         CHUNK = 1024
