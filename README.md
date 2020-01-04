@@ -1,4 +1,4 @@
-<img src="/logo.png" title="로고" alt="올 때 메로나" style="margin: 0 auto;"></img>
+<center><img src="/logo.png" title="로고" alt="올 때 메로나" ></img></center>
 
 # Pockachip
 
