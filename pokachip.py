@@ -58,7 +58,7 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        RECORD_SECONDS = 5
+        RECORD_SECONDS = 7
         WAVE_OUTPUT_FILENAME = "output.wav"
 
         # 녹음시작

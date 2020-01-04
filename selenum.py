@@ -7,8 +7,7 @@ from selenium.common.exceptions import NoSuchElementException, ElementNotInterac
 import time
 
 driver = webdriver.Chrome('./chromedriver')
-waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
-                        ElementNotInteractableException, NoSuchElementException])
+
 
 def leastword(list1, food1):
     #list2 = []
@@ -20,9 +19,9 @@ def leastword(list1, food1):
         except IndexError:
             continue
 
+
 def order(menu_list, adrs1, adrs2, store, num_list):
 
-    driver = webdriver.Chrome('./chromedriver')
     waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
         ElementNotInteractableException, NoSuchElementException])
 
@@ -93,22 +92,30 @@ def order(menu_list, adrs1, adrs2, store, num_list):
     except NoSuchElementException:
         if(store):
             waiting.until(EC.invisibility_of_element_located(
-                        (By.XPATH, "//*[@id=\"spinner\"]")))
+                (By.XPATH, "//*[@id=\"spinner\"]")))
 
             element11 = waiting.until(EC.element_to_be_clickable(
                 (By.XPATH, "//*[@id=\"category\"]/ul/li[1]/a")))
             element11.click()
-            driver.find_element_by_xpath("//*[@id=\"category\"]/ul/li[15]/form/div/input").send_keys(d) 
-            driver.find_element_by_xpath("//*[@id=\"category_search_button\"]").click()
+            driver.find_element_by_xpath(
+                "//*[@id=\"category\"]/ul/li[15]/form/div/input").send_keys(store)
+
+            time.sleep(1)
+
+            driver.find_element_by_xpath(
+                "//*[@id=\"category_search_button\"]").click()
+
         else:
             waiting.until(EC.invisibility_of_element_located(
-                        (By.XPATH, "//*[@id=\"spinner\"]")))
+                (By.XPATH, "//*[@id=\"spinner\"]")))
 
             element11 = waiting.until(EC.element_to_be_clickable(
                 (By.XPATH, "//*[@id=\"category\"]/ul/li[1]/a")))
             element11.click()
-            driver.find_element_by_xpath("//*[@id=\"category\"]/ul/li[15]/form/div/input").send_keys(lis[0]) 
-            driver.find_element_by_xpath("//*[@id=\"category_search_button\"]").click()
+            driver.find_element_by_xpath(
+                "//*[@id=\"category\"]/ul/li[15]/form/div/input").send_keys(lis[0])
+            driver.find_element_by_xpath(
+                "//*[@id=\"category_search_button\"]").click()
             # waiting.until(EC.invisibility_of_element_located(
             #     (By.XPATH, "//*[@id=\"spinner\"]")))
 
@@ -118,13 +125,15 @@ def order(menu_list, adrs1, adrs2, store, num_list):
             # (By.XPATH, "//*[@id=\"spinner\"]")))
             # element1.click()
 
-        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
 
         element2 = waiting.until(EC.element_to_be_clickable(
             (By.XPATH, "//*[@id=\"content\"]/div/div[4]/div[2]/div")))
         element2.click()
 
-        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
         size = len(driver.find_elements_by_xpath("//*[@id=\"menu\"]/div/div"))
 
         for i in range(3, size - 1):
@@ -135,7 +144,7 @@ def order(menu_list, adrs1, adrs2, store, num_list):
 
         for food in lis:
             contain_list = driver.find_elements_by_xpath(
-                    "//li[contains(string(), \'%s\')]" % food)
+                "//li[contains(string(), \'%s\')]" % food)
             size2 = len(contain_list)
 
             ind = leastword(contain_list, food)
@@ -144,7 +153,7 @@ def order(menu_list, adrs1, adrs2, store, num_list):
                 "//li[contains(string(), \'%s\')]" % food)[int(ind)].click()
             for j in range(num_list[k]-1):
                 driver.find_element_by_xpath(
-                "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
+                    "/html/body/div[10]/div/div[2]/div[5]/div/a[2]").click()
 
             # for i in range(0, size2):
             #     try:
@@ -163,11 +172,16 @@ def order(menu_list, adrs1, adrs2, store, num_list):
 
         driver.find_element_by_xpath("//a[@ng-click=\"checkout()\"]").click()
 
-        waiting.until(EC.invisibility_of_element_located((By.XPATH, "//*[@id=\"spinner\"]")))
+        waiting.until(EC.invisibility_of_element_located(
+            (By.XPATH, "//*[@id=\"spinner\"]")))
 
-        driver.find_element_by_xpath("//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(adrs2)
+        driver.find_element_by_xpath(
+            "//*[@id=\"content\"]/div/form[1]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/div/input").send_keys(adrs2)
+
 
 # store = None
-# menu = "짜장면 짬뽕"
+# menu = ["짜장면", "짬뽕"]
 # num_list = [1, 3]
-# order(menu)
+# adrs1 = "고려대학교안암캠퍼스"
+# adrs2 = "홍보관"
+# order(menu, adrs1, adrs2, store, num_list)
