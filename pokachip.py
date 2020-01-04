@@ -4,6 +4,7 @@ import io
 import os
 import time
 
+# selenium.py에서 order 함수 가져옴
 from selenum import order
 
 # Imports the Google Cloud client library
@@ -29,8 +30,10 @@ class WindowClass(QMainWindow, form_class):
         self.btn_Search.clicked.connect(self.startSearchFunction)
         self.btn_Clear.clicked.connect(self.changeTextFunction2)
 
+    # 메뉴입력 버튼을 누르면 실행되는 함수
     def printTextFunction(self):
 
+        # 오디오 파일 설정
         CHUNK = 1024
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
@@ -38,6 +41,7 @@ class WindowClass(QMainWindow, form_class):
         RECORD_SECONDS = 5
         WAVE_OUTPUT_FILENAME = "output.wav"
 
+        # 녹음시작
         p = pyaudio.PyAudio()
         stream = p.open(format=FORMAT,
                         channels=CHANNELS,
@@ -56,14 +60,18 @@ class WindowClass(QMainWindow, form_class):
         stream.stop_stream()
         stream.close()
         p.terminate()
+        # 녹음 끝
 
+        # 녹음파일 저장 시작
         wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(CHANNELS)
         wf.setsampwidth(p.get_sample_size(FORMAT))
         wf.setframerate(RATE)
         wf.writeframes(b''.join(frames))
         wf.close()
+        # 녹음파일 저장 끝
 
+        # 녹음파일 저장될 때까지 5초 sleep
         time.sleep(5)
         # Instantiates a client
 
@@ -77,10 +85,11 @@ class WindowClass(QMainWindow, form_class):
             content = audio_file.read()
             audio = types.RecognitionAudio(content=content)
 
+        # 오디오 파일 정보 입력
         config = types.RecognitionConfig(
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=44100,
-            language_code='ko-KR')
+            language_code='ko-KR')  # 언어 설정
 
         # Detects speech in the audio file
         response = client.recognize(config, audio)
@@ -96,13 +105,10 @@ class WindowClass(QMainWindow, form_class):
 
         self.textbrow_Test.setPlainText(menu)
 
-
     def startSearchFunction(self):
-        def asd():
-            order(menu)
+        order(menu)
 
-        asd()
-
+    # 프로그램 하단 TextLabel 변경하는 함수
     def changeTextFunction2(self):
         # self.Label이름.setText("String")
         # Label에 글자를 바꾸는 메서드
@@ -115,4 +121,3 @@ if __name__ == "__main__":
     myWindow = WindowClass()
     myWindow.show()
     app.exec_()
-
