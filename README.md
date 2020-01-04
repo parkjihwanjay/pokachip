@@ -36,6 +36,8 @@ Pockachip
 
 ## 가이드 라인
 
+ * Google Cloud Platform 가입 및 Google Speech API가 필요합니다.
+ 
  ```
  
 $ git clone https://github.com/juno1028/pokachip.git
@@ -49,11 +51,11 @@ $ pipenv shell
 $ python .\selenium.py
 
  ```
- * Google Cloud Platform 가입 및 Google Speech API가 필요합니다.
+
  
 ## 사용 방법
 
-1. **[기본 주소]**, **[상세 주소]**에 주소를 입력합니다.
+1. **[기본 주소]**, **[상세 주소]** 에 주소를 입력합니다.
 
 2. **[메뉴 입력]** 버튼을 누른 후 아래와 같은 형식으로 원하는 가게와 메뉴, 수량을 말합니다.
 
