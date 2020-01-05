@@ -72,7 +72,7 @@ $ python(3) ./pokachip.py
 
 2. "부르셨습니까"라고 응답하며 아래와 같이 프로그램이 실행됩니다.
 
-<img src="/howUsage.png" title="실행" alt="올 때 메로나" width="100%"></img>
+<img src="/howUsage.png" title="실행" alt="올 때 메로나"></img>
 
 3. **기본 주소**, **상세 주소**에 주소를 입력합니다.
 
