@@ -13,7 +13,6 @@ def order_data(string):
         menus = words[0].split("주문")[0]
 
     orders = menus.split("개")
-
     while '' in orders:
         orders.remove('')
 
