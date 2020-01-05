@@ -81,3 +81,22 @@ $ python(3) ./pokachip.py
 4. 만약, 주문하고자 하는 내용과 다르다면 **재입력**을 눌러 다시 녹음합니다.
 
 5. 주문하고자 하는 내용이 맞다면 **주문하기**를 눌러 주문합니다.
+
+## 프로젝트 구조
+
+#### pokachip.py
+
+프로그램 시작, 녹음 및 구문 분석, pyqt5 실행 및 동작
+
+#### ttsEx.py
+
+텍스트 -> 음성으로 변환
+
+#### selenum.py
+
+요기요에서 selenium을 통해 pokachip.py에서 받은 주문 실행
+
+#### textbrowserTest.ui
+
+pyqt5 ui 관리
+
