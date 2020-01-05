@@ -14,7 +14,7 @@
 >
 > pipenv 2018.11.26
 >
-> chromedriver의 경우 window, mac 모두 79.0.3945.36 버전입니다.<br>
+> chromedriver의 경우 mac 기준 79.0.3945.36 버전입니다.<br>
 >
 > 따라서 79버전 이상으로 크롬 업데이트가 필요합니다.
 
@@ -37,6 +37,16 @@
 - pyqt5 5.14.0
 
 - requests 2.22.0
+
+- numpy 1.18.0
+
+- google-cloud 0.34.0
+
+- goolge-cloud-texttospeech 0.5.0
+
+- playsound 1.2.2
+
+- pyobjc 6.1
 
 ## 가이드 라인
 
@@ -71,3 +81,22 @@ $ python(3) ./pokachip.py
 4. 만약, 주문하고자 하는 내용과 다르다면 **재입력**을 눌러 다시 녹음합니다.
 
 5. 주문하고자 하는 내용이 맞다면 **주문하기**를 눌러 주문합니다.
+
+## 프로젝트 구조
+
+#### pokachip.py
+
+프로그램 시작, 녹음 및 구문 분석, pyqt5 실행 및 동작
+
+#### ttsEx.py
+
+텍스트 -> 음성으로 변환
+
+#### selenum.py
+
+요기요에서 selenium을 통해 pokachip.py에서 받은 주문 실행
+
+#### textbrowserTest.ui
+
+pyqt5 ui 관리
+

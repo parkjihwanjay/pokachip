@@ -3,6 +3,7 @@ import wave
 import io
 import os
 import time
+import json
 import numpy as np
 from playsound import playsound
 
@@ -26,6 +27,14 @@ from PyQt5.QtGui import *
 # def openMarona():
 #     global form_class
 #     form_class = uic.loadUiType("textbrowserTest.ui")[0]
+
+# def save_address():
+#     address_dic = dict()
+#     address_dic["address1"] = address1
+#     address_dic["address2"] = address2
+
+#     with open('./address.json', 'w') as json_files:
+#         json.dump(address_dic, json_files)
 
 
 def start():
@@ -54,7 +63,7 @@ def start():
             FORMAT = pyaudio.paInt16
             CHANNELS = 1
             RATE = 44100
-            WAVE_OUTPUT_FILENAME = "output.wav"
+            WAVE_OUTPUT_FILENAME = "output.mp3"
 
             # 녹음시작
             p = pyaudio.PyAudio()
@@ -120,7 +129,7 @@ def start():
             client = speech.SpeechClient()
 
             # The name of the audio file to transcribe
-            file_name = os.path.join(os.path.dirname(__file__), './output.wav')
+            file_name = os.path.join(os.path.dirname(__file__), './output.mp3')
 
             # Loads the audio into memory
             with io.open(file_name, 'rb') as audio_file:
@@ -143,9 +152,10 @@ def start():
                 stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
                                 frames_per_buffer=CHUNK)
                 continue
-            # print('Transcript: {}' .format(
-            #    result[0].alternatives[0].transcript))
-            if str(result[0].alternatives[0].transcript) == "메로나":
+            print('Transcript: {}' .format(
+                result[0].alternatives[0].transcript))
+            # melon_list = ["메로나", "내 음악", "만화", "내놔", "내려놔", ]
+            if "메로나" in str(result[0].alternatives[0].transcript):
                 synthesize_text("부르셨나요?")
                 playsound("output2.mp3")
                 return True
@@ -208,6 +218,8 @@ class WindowClass(QMainWindow, form_class):
 
     def printTextFunction(self):
 
+        # save_address()
+
         self.box_record.setStyleSheet('background-color:#60B99A')
 
         # 오디오 파일 설정
@@ -215,7 +227,7 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        WAVE_OUTPUT_FILENAME = "output.wav"
+        WAVE_OUTPUT_FILENAME = "output.mp3"
 
         # 녹음시작
         p = pyaudio.PyAudio()
@@ -281,7 +293,7 @@ class WindowClass(QMainWindow, form_class):
         client = speech.SpeechClient()
 
         # The name of the audio file to transcribe
-        file_name = os.path.join(os.path.dirname(__file__), './output.wav')
+        file_name = os.path.join(os.path.dirname(__file__), './output.mp3')
 
         # Loads the audio into memory
         with io.open(file_name, 'rb') as audio_file:
