@@ -54,7 +54,7 @@ def start():
             FORMAT = pyaudio.paInt16
             CHANNELS = 1
             RATE = 44100
-            WAVE_OUTPUT_FILENAME = "output.wav"
+            WAVE_OUTPUT_FILENAME = "output.mp3"
 
             # 녹음시작
             p = pyaudio.PyAudio()
@@ -120,7 +120,7 @@ def start():
             client = speech.SpeechClient()
 
             # The name of the audio file to transcribe
-            file_name = os.path.join(os.path.dirname(__file__), './output.wav')
+            file_name = os.path.join(os.path.dirname(__file__), './output.mp3')
 
             # Loads the audio into memory
             with io.open(file_name, 'rb') as audio_file:
@@ -215,7 +215,7 @@ class WindowClass(QMainWindow, form_class):
         FORMAT = pyaudio.paInt16
         CHANNELS = 1
         RATE = 44100
-        WAVE_OUTPUT_FILENAME = "output.wav"
+        WAVE_OUTPUT_FILENAME = "output.mp3"
 
         # 녹음시작
         p = pyaudio.PyAudio()
@@ -281,7 +281,7 @@ class WindowClass(QMainWindow, form_class):
         client = speech.SpeechClient()
 
         # The name of the audio file to transcribe
-        file_name = os.path.join(os.path.dirname(__file__), './output.wav')
+        file_name = os.path.join(os.path.dirname(__file__), './output.mp3')
 
         # Loads the audio into memory
         with io.open(file_name, 'rb') as audio_file:
