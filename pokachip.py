@@ -3,6 +3,7 @@ import wave
 import io
 import os
 import time
+import json
 import numpy as np
 from playsound import playsound
 
@@ -26,6 +27,14 @@ from PyQt5.QtGui import *
 # def openMarona():
 #     global form_class
 #     form_class = uic.loadUiType("textbrowserTest.ui")[0]
+
+# def save_address():
+#     address_dic = dict()
+#     address_dic["address1"] = address1
+#     address_dic["address2"] = address2
+
+#     with open('./address.json', 'w') as json_files:
+#         json.dump(address_dic, json_files)
 
 
 def start():
@@ -143,9 +152,10 @@ def start():
                 stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
                                 frames_per_buffer=CHUNK)
                 continue
-            # print('Transcript: {}' .format(
-            #    result[0].alternatives[0].transcript))
-            if str(result[0].alternatives[0].transcript) == "메로나":
+            print('Transcript: {}' .format(
+                result[0].alternatives[0].transcript))
+            # melon_list = ["메로나", "내 음악", "만화", "내놔", "내려놔", ]
+            if "메로나" in str(result[0].alternatives[0].transcript):
                 synthesize_text("부르셨나요?")
                 playsound("output2.mp3")
                 return True
@@ -207,6 +217,8 @@ class WindowClass(QMainWindow, form_class):
         # print(address2)
 
     def printTextFunction(self):
+
+        # save_address()
 
         self.box_record.setStyleSheet('background-color:#60B99A')
 
