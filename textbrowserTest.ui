@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
-    <height>814</height>
+    <width>448</width>
+    <height>816</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,9 +19,9 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>400</y>
-     <width>331</width>
+     <x>50</x>
+     <y>410</y>
+     <width>351</width>
      <height>131</height>
     </rect>
    </property>
@@ -36,7 +36,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>16</pointsize>
         <kerning>false</kerning>
        </font>
       </property>
@@ -59,8 +59,14 @@
         <height>30</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">color: white;</string>
+       <string notr="true">color: white;
+padding-left:10px;</string>
       </property>
       <property name="text">
        <string/>
@@ -71,7 +77,7 @@
      <widget class="QLabel" name="label_adrs2">
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>16</pointsize>
         <kerning>false</kerning>
        </font>
       </property>
@@ -91,8 +97,14 @@
         <height>30</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">color : white;</string>
+       <string notr="true">color : white;
+padding-left: 10px;</string>
       </property>
      </widget>
     </item>
@@ -101,10 +113,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>550</y>
-     <width>331</width>
-     <height>211</height>
+     <x>50</x>
+     <y>560</y>
+     <width>351</width>
+     <height>221</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -131,7 +143,8 @@
         </property>
         <property name="styleSheet">
          <string notr="true">padding: 8px;
-border : 1px solid white;</string>
+border : 1px solid white;
+color : white;</string>
         </property>
         <property name="html">
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -191,12 +204,12 @@ border:none;
        <widget class="QPushButton" name="btn_Start">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">color:#FACA66;
-height: 20px;</string>
+height: 30px;</string>
         </property>
         <property name="text">
          <string>메뉴입력</string>
@@ -207,12 +220,12 @@ height: 20px;</string>
        <widget class="QPushButton" name="btn_Search">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">color:#FACA66;
-height: 20px;</string>
+height: 30px;</string>
         </property>
         <property name="text">
          <string>주문하기</string>
@@ -223,12 +236,12 @@ height: 20px;</string>
        <widget class="QPushButton" name="btn_reStart">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">color:#FACA66;
-height: 20px;</string>
+height: 30px;</string>
         </property>
         <property name="text">
          <string>재입력</string>
@@ -242,7 +255,7 @@ height: 20px;</string>
   <widget class="QLabel" name="label_head">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>30</y>
      <width>371</width>
      <height>91</height>
@@ -275,25 +288,34 @@ height: 20px;</string>
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>70</x>
      <y>140</y>
-     <width>291</width>
-     <height>251</height>
+     <width>311</width>
+     <height>261</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="toolTipDuration">
+    <number>-6</number>
    </property>
    <property name="styleSheet">
     <string notr="true">color:balck;
-border:none;</string>
+border:none;
+font-size: 16px;</string>
    </property>
    <property name="html">
     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont'; font-size:18pt; font-weight:600; color:#faca66;&quot;&gt;  Tool Tip&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;  1. [&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;기본&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;주소&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;상세&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;주소&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;에&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;주소&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;입력&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt;.&lt;br /&gt;  2. &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;메뉴&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;입력&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;버튼을&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;누른&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;후&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;아래와&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;같이 녹음 시작.&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:9pt;&quot;&gt;&lt;br /&gt;         &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;    &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;ex) &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;맘스터치&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#faca66;&quot;&gt;에서&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;싸이버거&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;한 &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#faca66;&quot;&gt;개&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#faca66;&quot;&gt;주문&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;해줘&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;&lt;br /&gt;       &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;녹음 중 녹음 버튼이&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#f45d4c;&quot;&gt;빨간색&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#fffcfc;&quot;&gt;으로&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#fffcfc;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#fffcfc;&quot;&gt;유지되고&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;&lt;br /&gt;       &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;녹음 버튼이&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#60b99a;&quot;&gt;초록색&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#f4fffb;&quot;&gt;으로&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#f4fffb;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#f4fffb;&quot;&gt;바뀌면&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#f4fffb;&quot;&gt; 녹음 완료&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt;&lt;br /&gt;  3. &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;주문 내용과&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;다르면&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;재입력&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;을&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;눌러&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;다시&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;녹음&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt;.&lt;br /&gt;  4. &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;주문 내용이&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;맞으면&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-weight:600; color:#ffffff;&quot;&gt;주문하기&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;를&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;눌러&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; color:#ffffff;&quot;&gt;주문 시작&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont'; font-size:24pt; font-weight:600; color:#faca66;&quot;&gt;  Tool Tip&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;  1. [&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;기본&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;주소&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;상세&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;주소&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;에&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;주소&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;입력&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt;.&lt;br /&gt;  2. &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;메뉴&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;입력&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;버튼을&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;누른&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;후&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;아래와&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;같이 녹음 시작.&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt;&quot;&gt;&lt;br /&gt;         &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt;&quot;&gt;    &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;ex) &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;맘스터치&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#faca66;&quot;&gt;에서&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;싸이버거&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;한 &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#faca66;&quot;&gt;개&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#faca66;&quot;&gt;주문&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;해줘&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt;&quot;&gt;&lt;br /&gt;       &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;녹음 중 녹음 버튼이&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#f45d4c;&quot;&gt;빨간색&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#fffcfc;&quot;&gt;으로&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#fffcfc;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#fffcfc;&quot;&gt;유지되고&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt;&quot;&gt;&lt;br /&gt;       &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;녹음 버튼이&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#60b99a;&quot;&gt;초록색&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#f4fffb;&quot;&gt;으로&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#f4fffb;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#f4fffb;&quot;&gt;바뀌면&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#f4fffb;&quot;&gt; 녹음 완료&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:16px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;  3. &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;주문 내용과&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;다르면&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;재입력&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;을&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;눌러&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;다시&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;녹음&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt;.&lt;br /&gt;  4. &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;주문 내용이&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;맞으면&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;주문하기&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;]&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;를&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;눌러&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Apple SD Gothic Neo'; font-size:14pt; color:#ffffff;&quot;&gt;주문 시작&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-size:14pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>
