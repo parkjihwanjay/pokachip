@@ -14,7 +14,7 @@
 >
 > pipenv 2018.11.26
 >
-> chromedriver의 경우 window, mac 모두 79.0.3945.36 버전입니다.<br>
+> chromedriver의 경우 mac 기준 79.0.3945.36 버전입니다.<br>
 >
 > 따라서 79버전 이상으로 크롬 업데이트가 필요합니다.
 
@@ -37,6 +37,16 @@
 - pyqt5 5.14.0
 
 - requests 2.22.0
+
+- numpy 1.18.0
+
+- google-cloud 0.34.0
+
+- goolge-cloud-texttospeech 0.5.0
+
+- playsound 1.2.2
+
+- pyobjc 6.1
 
 ## 가이드 라인
 
