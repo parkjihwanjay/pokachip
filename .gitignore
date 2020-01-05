@@ -3,6 +3,7 @@
 *.wav
 .DS_Store
 .log
+.env
 # folder
 __pycache__
 .vscode
