@@ -29,7 +29,7 @@ def leastword(list1, food1):
 
 def order(menu_list, adrs1, adrs2, store, num_list):
 
-    driver = webdriver.Chrome('./chromedriver')
+    driver = webdriver.Chrome('./chromedriver.exe')
     waiting = WebDriverWait(driver, 10, poll_frequency=1, ignored_exceptions=[
         ElementNotInteractableException, NoSuchElementException])
 
