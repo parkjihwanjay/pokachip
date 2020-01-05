@@ -68,6 +68,8 @@ $ python(3) ./pokachip.py
 
 ## 사용 방법
 
+<center><img src="/howUsage.png" title="실행" alt="올 때 메로나" width="100%"></img></center>
+
 1. **기본 주소**, **상세 주소**에 주소를 입력합니다.
 
 2. **메뉴 입력** 버튼을 누른 후 아래와 같은 형식으로 원하는 가게와 메뉴, 수량을 말합니다.
