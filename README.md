@@ -1,5 +1,5 @@
 
-<center><img src="/ha.png" title="로고" alt="올 때 메로나" width="80%"></img></center>
+<center><img src="/ha.png" title="로고" alt="올 때 메로나" width="100%"></img></center>
 
 
 
