@@ -12,6 +12,7 @@ from selenum import order
 from order import order_data
 from ttsEx import synthesize_text
 
+
 # Imports the Google Cloud client library
 from google.cloud import speech
 from google.cloud.speech import enums
@@ -36,95 +37,123 @@ from PyQt5.QtGui import *
 #     with open('./address.json', 'w') as json_files:
 #         json.dump(address_dic, json_files)
 
+CHUNK = 1024
+RATE = 44100
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
 
-def start():
-
-    CHUNK = 1024
-    RATE = 44100
-
+def Onpyaudio():
+    
     p = pyaudio.PyAudio()
+    
     stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
                     frames_per_buffer=CHUNK)
 
-    while(True):
+    return p, stream
 
-        data = np.frombuffer(stream.read(CHUNK), dtype=np.int16)
-        n = len(data)
-        y = np.fft.fft(data)/n
-        y = np.absolute(y)
-        y = y[range(int(n/2))]
-        y_value = max(y)
-        #print('큰소리 나는지 보는중')
+def measuerVolume(vol):
+    data = np.frombuffer(vol, dtype=np.int16)
 
-        if y_value > 5000:
-            # print('띠용')
+    n = len(data)
+    y = np.fft.fft(data)/n
+    y = np.absolute(y)
+    y = y[range(int(n/2))]
 
-            CHUNK = 1024
-            FORMAT = pyaudio.paInt16
-            CHANNELS = 1
-            RATE = 44100
-            WAVE_OUTPUT_FILENAME = "output.mp3"
+    return y
 
-            # 녹음시작
-            p = pyaudio.PyAudio()
-            stream = p.open(format=FORMAT,
-                            channels=CHANNELS,
-                            rate=RATE,
-                            input=True,
-                            frames_per_buffer=CHUNK)
-            print("Start to record the audio.")
-            frames2 = []
+def startRecording(p, stream):
+    print("Start to record the audio.")
 
-            # silence 기준시간 설정
+    # FORMAT = pyaudio.paInt16
+    # CHANNELS = 1
+    
+    # 녹음시작
+    p = pyaudio.PyAudio()
+    stream = p.open(format=FORMAT,
+                    channels=CHANNELS,
+                    rate=RATE,
+                    input=True,
+                    frames_per_buffer=CHUNK)
+    return p, stream
+
+def endRecording(p, stream):
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+
+def saveMP3(p, frames2, fileName):
+
+    wf = wave.open(fileName, 'wb')
+    wf.setnchannels(CHANNELS)
+    wf.setsampwidth(p.get_sample_size(FORMAT))
+    wf.setframerate(RATE)
+    wf.writeframes(b''.join(frames2))
+    wf.close()
+
+def loadAudio(file_name):
+    with io.open(file_name, 'rb') as audio_file:
+        content = audio_file.read()
+        audio = types.RecognitionAudio(content=content)
+
+    return audio
+
+def configAudio():
+    return types.RecognitionConfig(
+        encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=RATE,
+        language_code='ko-KR')
+
+def determineSilence(stream, frames2):
+    criterial_time = 0
+    end_time = 0
+
+    while(1):
+        vol2 = stream.read(CHUNK)
+        frames2.append(vol2)
+
+        maxVolume = max(measuerVolume(vol2))
+
+        # 기준값
+        thres_value = 1600
+
+        if maxVolume < thres_value:
+            if(criterial_time):
+                end_time = time.time()
+            else:
+                criterial_time = time.time()
+            if end_time - criterial_time > 1:
+                return frames2
+        else:
             criterial_time = 0
             end_time = 0
 
-            while(True):
-                data2 = stream.read(CHUNK)
-                frames2.append(data2)
-                # print(time.time())
+def clearStream(p):
+    return p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
+                            frames_per_buffer=CHUNK)
+def start():
 
-                dataBuffer = np.frombuffer(data2, dtype=np.int16)
-                n = len(dataBuffer)
-                measure = np.fft.fft(dataBuffer)/n
-                measure = np.absolute(measure)
-                measure = measure[(range(int(n/2)))]
-                measure_value = max(measure)
+    p, stream = Onpyaudio()
 
-                # 기준값
-                thres_value = 1600
+    while(1):
 
-                if measure_value < thres_value:
-                    if(criterial_time):
-                        # print('1번째 조건 criterial', criterial_time)
-                        end_time = time.time()
-                        # print('1번째 조건 endtime', end_time)
-                    else:
-                        criterial_time = time.time()
-                        # print(criterial_time)
+        # data = np.frombuffer(stream.read(CHUNK), dtype=np.int16)
+        # n = len(data)
+        # y = np.fft.fft(data)/n
+        # y = np.absolute(y)
+        # y = y[range(int(n/2))]
+        vol = stream.read(CHUNK)
+        maxVolume = max(measuerVolume(vol))
+        #print('큰소리 나는지 보는중')
 
-                    if end_time - criterial_time > 1:
-                        # print('종료')
-                        break
-                else:
-                    criterial_time = 0
-                    end_time = 0
-                    #print('말하는 중이라 시간 reset')
+        if maxVolume > 5000:
 
-            print("Recording is finished.")
-            stream.stop_stream()
-            stream.close()
-            p.terminate()
-            # 녹음 끝
+            p, stream = startRecording(p, stream)
 
-            # 녹음파일 저장 시작
-            wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-            wf.setnchannels(CHANNELS)
-            wf.setsampwidth(p.get_sample_size(FORMAT))
-            wf.setframerate(RATE)
-            wf.writeframes(b''.join(frames2))
-            wf.close()
-            # 녹음파일 저장 끝
+            frames2 = determineSilence(stream, [])
+            
+            endRecording(p, stream)
+
+            saveMP3(p, frames2, "output.mp3")
 
             client = speech.SpeechClient()
 
@@ -132,45 +161,21 @@ def start():
             file_name = os.path.join(os.path.dirname(__file__), './output.mp3')
 
             # Loads the audio into memory
-            with io.open(file_name, 'rb') as audio_file:
-                content = audio_file.read()
-                audio = types.RecognitionAudio(content=content)
-
+            audio = loadAudio(file_name)
             # 오디오 파일 정보 입력
-            config = types.RecognitionConfig(
-                encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-                sample_rate_hertz=44100,
-                language_code='ko-KR')  # 언어 설정
+            config = configAudio()
 
-            # Detects speech in the audio file
-            response = client.recognize(config, audio)
-            # print(response.results)
+            result = client.recognize(config, audio).results
+            
+            if(!len(result)):
+            
+            else:
+                if "메로나" in str(result[0].alternatives[0].transcript):
+                    synthesize_text("부르셨나요?")
+                    playsound("output2.mp3")
+                    return True
 
-            result = response.results
-
-            if(len(result) == 0):
-                stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
-                                frames_per_buffer=CHUNK)
-                continue
-            print('Transcript: {}' .format(
-                result[0].alternatives[0].transcript))
-            # melon_list = ["메로나", "내 음악", "만화", "내놔", "내려놔", ]
-            if "메로나" in str(result[0].alternatives[0].transcript):
-                synthesize_text("부르셨나요?")
-                playsound("output2.mp3")
-                return True
-
-            stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True,
-                            frames_per_buffer=CHUNK)
-
-            # for result in response.results:
-            #     print('Transcript: {}' .format(
-            #         result.alternatives[0].transcript))
-            #     if str(result.alternatives[0].transcript) == "메로나":
-            #         return True
-            # else:
-            #     break
-
+            stream = clearStream(p)
 
 if start():
     form_class = uic.loadUiType("textbrowserTest.ui")[0]
