@@ -167,9 +167,7 @@ def start():
 
             result = client.recognize(config, audio).results
             
-            if(!len(result)):
-            
-            else:
+            if(len(result)):
                 if "메로나" in str(result[0].alternatives[0].transcript):
                     synthesize_text("부르셨나요?")
                     playsound("output2.mp3")
